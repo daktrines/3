@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_2"
         mc:Ignorable="d"
-        Title="3" Height="450" Width="800">
+        Title="3" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="Black" Offset="0"/>
@@ -47,7 +47,7 @@
             <Grid>
                 <TextBox x:Name="rez1" Text="" MaxLines="1" IsReadOnly="True" Margin="10,10,0,0" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="377"/>
                 <Button Content="Рассчитать" Click="Рассчитать_Click"  Margin="10,110,0,0" HorizontalAlignment="Left" Width="377" Height="27" VerticalAlignment="Top" Background="#FFFF66E3"/>
-                <Button Content="Очистить матрицу" Click="ОчиститьМатрицу_Click" ToolTip="Очистить матрицу" HorizontalAlignment="Left" Width="377" Height="27" VerticalAlignment="Top" Margin="10,141,0,0" Background="#FFFF66E3"/>
+                <Button Content="Очистить" Click="ОчиститьМатрицу_Click" ToolTip="Очистить матрицу" HorizontalAlignment="Left" Width="377" Height="27" VerticalAlignment="Top" Margin="10,141,0,0" Background="#FFFF66E3"/>
                 <TextBox x:Name="rez2" Text="" MaxLines="1" IsReadOnly="True" Margin="10,60,0,0" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="377"/>
             </Grid>
         </GroupBox>

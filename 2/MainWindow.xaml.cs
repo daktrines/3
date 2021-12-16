@@ -58,16 +58,18 @@ namespace _3
 
             if (Int32.TryParse(((TextBox)e.EditingElement).Text, out matr[rowIndex, columnIndex]))
             { }
-            else MessageBox.Show("Неверные данные!", "Ошибка");
+            else MessageBox.Show("Неверные данные!", "Ошибка", MessageBoxButton.OK,
+                  MessageBoxImage.Error);
         }
 
         //Заполнение матрицы
         private void Заполнить_Click(object sender, RoutedEventArgs e)
         {
 
-            //Проверка поля на корректность введенных данных
-            if(Int32.TryParse(kolStrok.Text, out int row) && Int32.TryParse(kolStolbcov.Text, out int column) && row > 0 && column >0 )
+            try
             {
+                int row = Convert.ToInt32(kolStrok.Text);
+                int column = Convert.ToInt32(kolStolbcov.Text);
                 Class1.Заполнить(row, column, out matr);
 
                 //Выводим матрицу на форму
@@ -77,7 +79,13 @@ namespace _3
                 rez1.Clear();
                 rez2.Clear();
             }
-            else MessageBox.Show("Неверные данные!", "Ошибка");
+            catch
+            {
+                MessageBox.Show("Неверные данные!", "Ошибка", MessageBoxButton.OK,
+                  MessageBoxImage.Error);
+                ZnK.Focus();
+            }
+
         }
         //Расчет задания для матрицы
         private void Рассчитать_Click(object sender, RoutedEventArgs e)
@@ -107,16 +115,19 @@ namespace _3
         private void ОчиститьМатрицу_Click(object sender, RoutedEventArgs e)
         {
             //Очищаем результат матрицы
+            ZnK.Clear();
             rez1.Clear();
             rez2.Clear();
+            kolStrok.Clear();
+            kolStolbcov.Clear();
 
             if (matr != null && matr.Length != 0)
             {
-                Class1.ОчиститьМатрицу(matr);
-                //Выводим матрицу на форму
-                matrData.ItemsSource = VisualArray.ToDataTable(matr).DefaultView;
+                matrData.ItemsSource = null;
             }
-            else MessageBox.Show("Вы не создали матрицу, укажите размеры матрицы и нажмите кнопку \"Заполнить", "Ошибка");
+            else MessageBox.Show("Вы не создали матрицу, укажите размеры матрицы и нажмите кнопку \"Заполнить", "Ошибка", MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+
         }
         //Сохранение матрицы
         private void Savematr_Click(object sender, RoutedEventArgs e)
