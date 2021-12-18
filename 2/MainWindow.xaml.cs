@@ -99,15 +99,23 @@ namespace _3
             }
             else
             {
-                int K = Convert.ToInt32(ZnK.Text); //Вводим K
-                int M = Convert.ToInt32(kolStrok.Text); //Вводим M
-                if (K > 0 && K <= M)
+                try
                 {
-                    Class2.Рассчитать(K, matr, out int sum, out int proizvedenie); //функция расчета
-                    rez1.Text = Convert.ToString(sum); //выводим сумму нужной строки
-                    rez2.Text = Convert.ToString(proizvedenie); //выводим прозведение нужной строки
+                    int K = Convert.ToInt32(ZnK.Text); //Вводим K
+                    int M = Convert.ToInt32(kolStrok.Text); //Вводим M
+                    if (K > 0 && K <= M)
+                    {
+                        Class2.Рассчитать(K, matr, out int sum, out int proizvedenie); //функция расчета
+                        rez1.Text = Convert.ToString(sum); //выводим сумму нужной строки
+                        rez2.Text = Convert.ToString(proizvedenie); //выводим прозведение нужной строки
+                    }
+                    else MessageBox.Show("Неверно ввели к (к должно быть меньше или равно количеству строк. И к не должно быть отрицательным числом)", "Ошибка");
                 }
-                else MessageBox.Show("Неверно ввели к (к должно быть меньше или равно количеству строк. И к не должно быть отрицательным числом)", "Ошибка");
+                catch
+                {
+                    MessageBox.Show("Неверные данные!", "Ошибка", MessageBoxButton.OK,
+                      MessageBoxImage.Error);
+                }
 
             }
         }
